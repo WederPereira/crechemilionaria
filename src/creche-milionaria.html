@@ -347,7 +347,7 @@ window.CM_CONFIG = {
   whatsapp:     '5511942064588',   // numero que recebe os leads (so digitos, com DDI)
   metaPixelId:  '',                // ex: '1234567890123456'
   ga4Id:        '',                // ex: 'G-XXXXXXXXXX'
-  leadEndpoint: 'https://script.google.com/macros/s/AKfycbxiCs_BXwwg0Xjf9IEAlBwzHMYyNIh5Kw0ueK-t8f49RjpT4NeYknAaZFMR1677UsCi/exec'   // Apps Script "Leads Creche Milionaria"
+  leadEndpoint: '/api/public/lead'   // grava na planilha "Leads — Creche Milionária" via conector Google Sheets
 };
 
 /* ---- Meta Pixel ---- */
@@ -393,8 +393,8 @@ window.cmEnviarLead=function(dados){
     enviadoEm:new Date().toISOString()
   },dados));
   try{
-    fetch(url,{method:'POST',mode:'no-cors',keepalive:true,
-      headers:{'Content-Type':'text/plain;charset=utf-8'},body:corpo});
+    fetch(url,{method:'POST',keepalive:true,
+      headers:{'Content-Type':'application/json'},body:corpo});
   }catch(e){
     try{ navigator.sendBeacon(url,corpo); }catch(e2){}
   }
