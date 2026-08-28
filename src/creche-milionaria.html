@@ -47,15 +47,17 @@
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   h1,h2,h3,h4{font-family:'Sora',sans-serif;font-weight:700;line-height:1.08;letter-spacing:-.02em}
-  .wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,32px)}
   .hl{color:var(--gold)}
-  section{padding:120px 0;position:relative}
-  .lbl{display:inline-block;font-family:'Sora',sans-serif;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:20px}
-  h2.title{font-size:clamp(1.9rem,4vw,3rem);max-width:20ch;letter-spacing:-.025em}
+  section{padding:clamp(68px,8.5vw,112px) 0;position:relative;scroll-margin-top:80px}
+  .lbl{display:inline-block;font-family:'Sora',sans-serif;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px}
+  h2.title{font-size:clamp(1.85rem,3.6vw,2.85rem);max-width:22ch;letter-spacing:-.025em;text-wrap:balance}
   .center{text-align:center}
   .center h2.title{margin:0 auto}
-  .lead{color:var(--muted);font-size:1.15rem;max-width:60ch;margin:22px auto 0;font-weight:300}
-  .rule{height:1px;background:var(--line);max-width:1160px;margin:0 auto}
+  .lead{color:var(--muted);font-size:clamp(1rem,1.2vw,1.12rem);max-width:62ch;margin:20px auto 0;font-weight:300;text-wrap:pretty}
+  .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line) 15%,var(--line) 85%,transparent);max-width:1200px;margin:0 auto}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--gold);color:#151206;font-family:'Sora',sans-serif;font-weight:600;font-size:1rem;padding:17px 34px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;transition:filter .2s,transform .2s}
   .btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
   .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line);font-weight:500}
