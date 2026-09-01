@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3 Variantes — Creche Milionária</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--ink:#0a0a0c;--ink-2:#101015;--gold:#d8b25e;--gold-soft:#e8c987;
+        --bone:#f3f2ef;--mute:#8f8f99;--line:rgba(243,242,239,.12);
+        --line-g:rgba(216,178,94,.3)}
+  body{background:var(--ink);color:var(--bone);font-family:"Inter",system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{max-width:1180px;margin:0 auto;padding:72px 32px 96px}
+  header{margin-bottom:56px}
+  .lbl{display:inline-flex;align-items:center;gap:12px;font-size:.68rem;letter-spacing:.28em;
+       text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+  .lbl::before{content:"";width:34px;height:1px;background:var(--gold)}
+  h1{font-family:"Sora",sans-serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:700;
+     letter-spacing:-.03em;line-height:1.1}
+  header p{margin-top:18px;max-width:62ch;color:var(--mute);font-weight:300;line-height:1.7}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:960px){.grid{grid-template-columns:1fr}}
+
+  .card{display:flex;flex-direction:column;background:var(--ink-2);border:1px solid var(--line);
+        border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;
+        transition:border-color .3s,transform .3s,box-shadow .3s}
+  .card:hover{border-color:var(--line-g);transform:translateY(-4px);
+              box-shadow:0 24px 50px -28px rgba(216,178,94,.5)}
+  .thumb{aspect-ratio:16/10;position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+         display:flex;align-items:center;justify-content:center;padding:22px}
+  .thumb.a{background:radial-gradient(ellipse at 50% 45%,#241d10,#0a0a0c 72%)}
+  .thumb.b{background:linear-gradient(135deg,#12121a,#0a0a0c);
+           background-image:linear-gradient(rgba(243,242,239,.06) 1px,transparent 1px),
+                            linear-gradient(90deg,rgba(243,242,239,.06) 1px,transparent 1px);
+           background-size:26px 26px}
+  .thumb.c{background:linear-gradient(180deg,#2a2113,#0a0a0c)}
+  .mini{text-align:center;line-height:1.15}
+  .mini .t1{color:var(--bone)}
+  .mini .t2{color:var(--gold-soft)}
+  .thumb.a .mini{font-family:"Sora",serif;font-size:1.45rem;font-weight:400}
+  .thumb.b .mini{font-family:"Sora",sans-serif;font-size:1.2rem;font-weight:700;
+                 letter-spacing:-.02em;text-align:left;width:100%}
+  .thumb.c .mini{font-family:"Sora",sans-serif;font-size:1.8rem;font-weight:700;
+                 text-transform:uppercase;letter-spacing:.01em;text-align:left;width:100%;
+                 align-self:flex-end}
+  .thumb.c{align-items:flex-end}
+
+  .body{padding:22px}
+  .body h2{font-family:"Sora",sans-serif;font-size:1.08rem;font-weight:600;letter-spacing:-.01em}
+  .body .kind{display:block;margin-top:6px;font-size:.66rem;letter-spacing:.16em;
+              text-transform:uppercase;color:var(--gold)}
+  .body p{margin-top:14px;font-size:.87rem;color:var(--mute);line-height:1.62}
+  .meta{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);
+        display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-size:.65rem;letter-spacing:.05em;color:var(--mute);border:1px solid var(--line);
+        border-radius:100px;padding:5px 10px}
+
+  .note{margin-top:52px;padding:22px 24px;border:1px solid var(--line);border-radius:10px;
+        background:var(--ink-2);font-size:.87rem;color:var(--mute);line-height:1.7;max-width:78ch}
+  .note b{color:var(--bone);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="lbl">Exploração de direção visual</span>
+    <h1>3 variantes da homepage</h1>
+    <p>Mesmo conteúdo, mesmo tema gold premium, mesma coleira 3D girando com o mouse
+       em todas — o que muda é a linguagem visual. Passe o mouse por cima do hero de
+       cada uma para ver o giro.</p>
+  </header>
+
+  <div class="grid">
+    <a class="card" href="a-editorial.html">
+      <div class="thumb a"><div class="mini"><span class="t1">Dobre o faturamento em </span><span class="t2">90 dias</span></div></div>
+      <div class="body">
+        <h2>Editorial Luxo</h2><span class="kind">Variante A</span>
+        <p>Serifada Playfair Display, composição centrada e arejada, filetes dourados finos.
+           A coleira fica grande e discreta atrás do título, sob vinheta forte. Vende sofisticação.</p>
+        <div class="meta"><span class="chip">Playfair Display</span><span class="chip">Centrado</span>
+          <span class="chip">Muito respiro</span><span class="chip">Ouro só em acento</span></div>
+      </div>
+    </a>
+
+    <a class="card" href="b-dashboard.html">
+      <div class="thumb b"><div class="mini"><span class="t1">Dobre o faturamento em </span><span class="t2">90 dias</span></div></div>
+      <div class="body">
+        <h2>Tech Dashboard</h2><span class="kind">Variante B</span>
+        <p>Space Grotesk com números em mono, malha de grid visível, cards com borda.
+           A coleira vira um visor com cantos de HUD e leitura de ângulo ao vivo. Vende método e dado.</p>
+        <div class="meta"><span class="chip">Space Grotesk</span><span class="chip">IBM Plex Mono</span>
+          <span class="chip">Grid denso</span><span class="chip">Visor com HUD</span></div>
+      </div>
+    </a>
+
+    <a class="card" href="c-cinematico.html">
+      <div class="thumb c"><div class="mini"><span class="t1">Dobre o<br>faturamento em </span><span class="t2">90 dias</span></div></div>
+      <div class="body">
+        <h2>Cinemático</h2><span class="kind">Variante C</span>
+        <p>Bebas Neue condensada em escala enorme, coleira ocupando a tela toda com letterbox,
+           texto no canto inferior e um único CTA. Vende impacto e desejo.</p>
+        <div class="meta"><span class="chip">Bebas Neue</span><span class="chip">Tela cheia</span>
+          <span class="chip">Letterbox</span><span class="chip">CTA único</span></div>
+      </div>
+    </a>
+  </div>
+
+  <p class="note"><b>Sobre o Figma:</b> a conta está no plano Starter e o limite de chamadas do
+     MCP estourou depois de 3 operações, então não deu para montar as variantes lá. O arquivo
+     já foi criado e está vazio, esperando. Estas três páginas servem como especificação exata
+     para portar quando o limite liberar ou o plano for atualizado.</p>
+</div>
+</body>
+</html>
