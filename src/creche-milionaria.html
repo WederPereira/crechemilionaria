@@ -40,7 +40,7 @@
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Organization","name":"Creche Milionária","url":"https://SEU-DOMINIO.com.br/","logo":"https://SEU-DOMINIO.com.br/og-image.jpg","description":"Mentoria para donos de creche canina que já faturam e querem escalar. Comercial, gestão, operação e marketing para dobrar o faturamento em 90 dias, aproveitando a estrutura e a base de clientes que você já tem.","sameAs":[],"contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+55 11 94206-4588","areaServed":"BR","availableLanguage":["Portuguese","English","Spanish"]},"founder":[{"@type":"Person","name":"Rosangela Pessoa","jobTitle":"Estratégia e Gestão"},{"@type":"Person","name":"Wesley Correa","jobTitle":"Operação e Marketing"}]},{"@context":"https://schema.org","@type":"WebSite","name":"Creche Milionária","url":"https://SEU-DOMINIO.com.br/","inLanguage":"pt-BR"},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Para quem é essa mentoria?","acceptedAnswer":{"@type":"Answer","text":"Para donos de creche canina que já faturam acima de R$ 15 mil/mês, têm ao menos 3 pessoas na equipe e mais de 30 alunos ativos. É uma mentoria de escala — não é para começar do zero."}},{"@type":"Question","name":"Como funcionam os encontros?","acceptedAnswer":{"@type":"Answer","text":"Todas as semanas têm encontro: a cada 15 dias um Hot Seat com os mentores e, na semana seguinte, uma Tutoria de Crescimento. São 2 Hot Seats e 2 Tutorias por mês."}},{"@type":"Question","name":"É mais um curso gravado?","acceptedAnswer":{"@type":"Answer","text":"Não. É mentoria ao vivo, toda semana, com acompanhamento personalizado do seu negócio — o oposto de curso gravado e genérico."}},{"@type":"Question","name":"Quanto custa a mentoria?","acceptedAnswer":{"@type":"Answer","text":"O investimento é apresentado na Call de Diagnóstico, depois de entendermos o momento da sua creche e se faz sentido para os dois lados."}},{"@type":"Question","name":"Como é a Call de Diagnóstico?","acceptedAnswer":{"@type":"Answer","text":"Uma conversa individual em que analisamos onde sua creche está, os gargalos e o caminho para dobrar o faturamento. Sem compromisso de compra."}},{"@type":"Question","name":"Em quanto tempo vejo resultado?","acceptedAnswer":{"@type":"Answer","text":"A proposta é dobrar o faturamento em até 90 dias. Cases como Domus e Bom Garoto tiveram saltos já nos primeiros 30 a 45 dias."}}]},{"@context":"https://schema.org","@type":"Service","serviceType":"Mentoria empresarial para creches caninas","provider":{"@type":"Organization","name":"Creche Milionária"},"areaServed":"BR","description":"Mentoria para donos de creche canina que já faturam e querem escalar. Comercial, gestão, operação e marketing para dobrar o faturamento em 90 dias, aproveitando a estrutura e a base de clientes que você já tem.","audience":{"@type":"BusinessAudience","name":"Donos de creche canina"}}]</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #070709;
@@ -3124,6 +3124,69 @@ document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
   hero.addEventListener("pointerleave", function () { hovering = false; });
 
   requestAnimationFrame(tick);
+})();
+</script>
+
+<script>
+/* ============================================================
+   REDESIGN — navbar flutuante, secao ativa e reveal no scroll
+   ============================================================ */
+(function () {
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.querySelector('nav.main-nav');
+
+  /* estado de scroll da navbar (mais blur/opacidade) */
+  if (nav) {
+    var tick = false;
+    var onScroll = function () {
+      if (tick) return;
+      tick = true;
+      requestAnimationFrame(function () {
+        nav.classList.toggle('is-scrolled', window.scrollY > 24);
+        tick = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* indicador de secao ativa */
+  var links = [].slice.call(document.querySelectorAll('.nav-link[href^="#"]'));
+  var alvos = links.map(function (l) {
+    return document.querySelector(l.getAttribute('href'));
+  });
+  if (links.length && 'IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var i = alvos.indexOf(e.target);
+        if (i < 0) return;
+        links.forEach(function (l, j) { l.classList.toggle('active', i === j); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    alvos.forEach(function (t) { if (t) spy.observe(t); });
+  }
+
+  /* reveal progressivo das secoes */
+  if (!reduz && 'IntersectionObserver' in window) {
+    var alvosReveal = [].slice.call(
+      document.querySelectorAll('section > .wrap > *, .final > .wrap > *')
+    ).filter(function (el) {
+      return !el.closest('#calculadora') && !el.classList.contains('fade');
+    });
+    var rev = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('cm-in');
+        rev.unobserve(e.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    alvosReveal.forEach(function (el, i) {
+      el.classList.add('cm-reveal');
+      el.style.transitionDelay = Math.min(i % 4, 3) * 70 + 'ms';
+      rev.observe(el);
+    });
+  }
 })();
 </script>
 </body>
