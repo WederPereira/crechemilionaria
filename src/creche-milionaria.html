@@ -1709,6 +1709,92 @@
     box-shadow: var(--shadow-glow);
   }
 
+  /* ---------- nova linguagem para blocos de conteúdo ---------- */
+  .card, .pillar, .mcard, .wk, .case, .ai, .panel, .oxy,
+  .mentor, .podblk, .form, .calc, details, .selo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--hair-2);
+    background:
+      linear-gradient(135deg, rgba(216, 178, 94, 0.075), transparent 32%),
+      linear-gradient(155deg, rgba(255, 255, 255, 0.045), transparent 46%),
+      rgba(13, 13, 18, 0.78);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.055),
+      0 22px 55px -38px rgba(0, 0, 0, 0.95);
+  }
+  .card::before, .pillar::before, .mcard::before, .wk::before,
+  .case::before, .ai::before, .panel::before, .oxy::before,
+  .mentor::before, .podblk::before, .form::before, .calc::before,
+  details::before, .selo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-2), transparent);
+    opacity: 0.78;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .card::after, .pillar::after, .mcard::after, .wk::after,
+  .ai::after, .panel::after, .oxy::after, .podblk::after {
+    content: "";
+    position: absolute;
+    right: -34px;
+    bottom: -34px;
+    width: 84px;
+    height: 84px;
+    border: 1px solid rgba(216, 178, 94, 0.12);
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+  .card:hover, .pillar:hover, .mcard:hover, .wk:hover, .case:hover,
+  .ai:hover, .panel:hover, .oxy:hover, .mentor:hover, .podblk:hover {
+    transform: translateY(-4px);
+    border-color: rgba(216, 178, 94, 0.42);
+    background:
+      linear-gradient(135deg, rgba(216, 178, 94, 0.11), transparent 34%),
+      linear-gradient(155deg, rgba(255, 255, 255, 0.06), transparent 48%),
+      rgba(15, 15, 21, 0.9);
+    box-shadow: 0 24px 60px -34px rgba(216, 178, 94, 0.34);
+  }
+  .card, .pillar, .mcard, .wk, .case, .ai, .panel, .oxy,
+  .mentor, .podblk {
+    transition: transform 0.35s var(--ease), border-color 0.3s var(--ease),
+                background 0.3s var(--ease), box-shadow 0.35s var(--ease);
+  }
+  .grid3 { gap: 18px; }
+  .card, .pillar { padding: 34px 30px 36px; text-align: left; }
+  .card h3, .pillar h3 { margin-top: 4px; }
+  .card .num, .pillar .n {
+    border: 0;
+    border-radius: 0;
+    border-left: 2px solid var(--gold);
+    background: transparent;
+    padding: 2px 0 2px 12px;
+    margin-bottom: 22px;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+  }
+  .m2, .cases, .auth { gap: 18px; }
+  .mcard, .case { text-align: left; }
+  .week { gap: 10px; }
+  .wk { text-align: left; }
+  .ai { align-items: flex-start; }
+  .ai b { margin-top: 0; }
+  details { padding-left: 26px; padding-right: 26px; }
+  details[open] {
+    background:
+      linear-gradient(135deg, rgba(216, 178, 94, 0.09), transparent 34%),
+      rgba(15, 15, 21, 0.92);
+  }
+  @media(max-width: 720px) {
+    .card, .pillar, .mcard, .wk, .case, .ai, .panel, .oxy { padding: 28px 24px; }
+  }
+
   /* ---------- botoes ---------- */
   .btn {
     border-radius: 14px;
@@ -1815,7 +1901,6 @@ window.cmEnviarLead=function(dados){
     </a>
     
     <div class="nav-menu" id="navMenu">
-      <a href="#gargalo" class="nav-link">O Gargalo</a>
       <a href="#ecossistema" class="nav-link">Ecossistema</a>
       <a href="#metodo" class="nav-link">Método</a>
       <a href="#cases" class="nav-link">Resultados</a>
@@ -2057,8 +2142,8 @@ window.cmEnviarLead=function(dados){
       </div>
     </div>
     <div class="auth">
-      <div class="ai fade"><div class="ic">🐾</div><div><b data-i18n="au1b">Vivem o que ensinam</b><span data-i18n="au1s">Uma operação real com aproximadamente 200 cães matriculados. O método vem da prática diária — não de teoria de palco.</span></div></div>
-      <div class="ai fade"><div class="ic">🎙️</div><div><b data-i18n="au2b">Autoridade no setor pet</b><span data-i18n="au2s">À frente do AuauPod, Wesley entrevistou os maiores especialistas pet do Brasil.</span></div></div>
+      <div class="ai fade"><div><b data-i18n="au1b">Vivem o que ensinam</b><span data-i18n="au1s">Uma operação real com aproximadamente 200 cães matriculados. O método vem da prática diária — não de teoria de palco.</span></div></div>
+      <div class="ai fade"><div><b data-i18n="au2b">Autoridade no setor pet</b><span data-i18n="au2s">À frente do AuauPod, Wesley entrevistou os maiores especialistas pet do Brasil.</span></div></div>
     </div>
     <div class="podblk fade">
       <div class="podhead">
@@ -2087,9 +2172,9 @@ window.cmEnviarLead=function(dados){
     <h2 class="title fade" data-i18n="q_title">Para quem já tirou a creche do chão — e quer o <span class="hl">próximo nível</span></h2>
     <p class="lead fade" data-i18n="q_lead">É para o dono de creche canina que já construiu uma operação sólida e sente que bateu no teto do próprio esforço. Se você se encaixa nos pontos abaixo, essa mentoria foi feita pra você.</p>
     <div class="grid3">
-      <div class="card fade"><span class="ic">💰</span><h3 data-i18n="q1t">Fatura acima de R$ 15 mil/mês</h3><p data-i18n="q1d">Você já provou que o negócio funciona. Agora precisa de método para multiplicar, não para sobreviver.</p></div>
-      <div class="card fade"><span class="ic">👥</span><h3 data-i18n="q2t">Tem ao menos 3 pessoas na equipe</h3><p data-i18n="q2d">Você já não faz tudo sozinho — mas ainda não tem uma gestão que roda sem depender de você.</p></div>
-      <div class="card fade"><span class="ic">🐶</span><h3 data-i18n="q3t">Mais de 30 alunos ativos</h3><p data-i18n="q3d">Tem demanda e estrutura. Falta o ecossistema certo para transformar volume em lucro previsível.</p></div>
+      <div class="card fade"><h3 data-i18n="q1t">Fatura acima de R$ 15 mil/mês</h3><p data-i18n="q1d">Você já provou que o negócio funciona. Agora precisa de método para multiplicar, não para sobreviver.</p></div>
+      <div class="card fade"><h3 data-i18n="q2t">Tem ao menos 3 pessoas na equipe</h3><p data-i18n="q2d">Você já não faz tudo sozinho — mas ainda não tem uma gestão que roda sem depender de você.</p></div>
+      <div class="card fade"><h3 data-i18n="q3t">Mais de 30 alunos ativos</h3><p data-i18n="q3d">Tem demanda e estrutura. Falta o ecossistema certo para transformar volume em lucro previsível.</p></div>
     </div>
   </div>
 </section>
